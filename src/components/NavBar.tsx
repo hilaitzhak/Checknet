@@ -1,6 +1,5 @@
 import { DownloadIcon } from "@chakra-ui/icons";
 import { Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import { Navigate, Route, Routes } from "react-router-dom";
 import SummeryTab from "./SummaryTab";
 import BusinessTab from "./BusinessTab";
 import DataWarehouse from "./DataWarehouse";
@@ -60,9 +59,6 @@ function NavBar () {
                     <TabPanel><NetworkTab /></TabPanel>
                     <TabPanel><SocialNetworkTab /></TabPanel>
                     <TabPanel><DownloadTab /></TabPanel>
-                    <Routes>
-                        <Route path="*" element={<Navigate to="/" replace={true} />}/>
-                    </Routes>
                 </TabPanels>
             </Tabs>
     );
