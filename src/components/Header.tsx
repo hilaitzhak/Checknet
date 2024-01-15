@@ -18,7 +18,7 @@ function Header () {
             <Breadcrumb separator='|' color="blue">
                 {['יציאה', 'הדוחות שלי', 'הזמנת דוח'].map((link, index) => (
                 <BreadcrumbItem key={index}>
-                    <BreadcrumbLink href='#'>{link}</BreadcrumbLink>
+                    <BreadcrumbLink href='/'>{link}</BreadcrumbLink>
                 </BreadcrumbItem>
                 ))}
             </Breadcrumb>

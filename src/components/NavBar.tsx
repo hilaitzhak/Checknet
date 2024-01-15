@@ -1,7 +1,13 @@
 import { DownloadIcon } from "@chakra-ui/icons";
 import { Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import SummeryTab from "./SummaryTab";
+import BusinessTab from "./BusinessTab";
+import DataWarehouse from "./DataWarehouse";
+import TrialStatus from "./TrialStatus";
+import NetworkTab from "./NetworkTab";
+import SocialNetworkTab from "./SocialNetworkTab";
+import DownloadTab from "./DownloadTab";
 
 function NavBar () {
 
@@ -14,15 +20,15 @@ function NavBar () {
         { label: "רשתות חברתיות", path: "/רשתות חברתיות" },
         { label: "download", path: "/download"},
     ];
-    
+
     return (
-        <Router>
             <Tabs 
                 position="relative" 
                 justifyContent="space-between" 
                 alignItems="center" 
                 width="100%" 
                 padding="15px 10px"
+                defaultIndex={0}
             >
                 <TabList
                     display="flex"
@@ -34,11 +40,9 @@ function NavBar () {
                     {tabData.map((tab) => (
                         <Tab key={tab.label}>
                             {tab.label === "download" ? (
-                                <Link to={tab.path}>
-                                    <DownloadIcon boxSize={6} display="flex" cursor="pointer" />
-                                </Link>
+                                <DownloadIcon boxSize={6} display="flex" cursor="pointer" />
                             ) : (
-                                <Link to={tab.path}>{tab.label}</Link>
+                                <p>{tab.label}</p>
                             )}
                         </Tab>
                     ))}
@@ -49,14 +53,18 @@ function NavBar () {
                     borderRadius="1px"
                 />
                 <TabPanels>
-                    <TabPanel>
-                        <Routes>
-                            <Route path="/סיכום" element={<SummeryTab />}/>
-                        </Routes>
-                    </TabPanel>
+                    <TabPanel><SummeryTab /></TabPanel>
+                    <TabPanel><BusinessTab /></TabPanel>
+                    <TabPanel><DataWarehouse /></TabPanel>
+                    <TabPanel><TrialStatus /></TabPanel>
+                    <TabPanel><NetworkTab /></TabPanel>
+                    <TabPanel><SocialNetworkTab /></TabPanel>
+                    <TabPanel><DownloadTab /></TabPanel>
+                    <Routes>
+                        <Route path="*" element={<Navigate to="/" replace={true} />}/>
+                    </Routes>
                 </TabPanels>
             </Tabs>
-        </Router>
     );
 }
 
